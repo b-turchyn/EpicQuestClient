@@ -1,13 +1,16 @@
 {
-  "name": "electron-boilerplate",
-  "productName": "Electron Boilerplate",
-  "identifier": "com.example.electron-boilerplate",
-  "description": "Starter for your Electron application. Out of the box ready for serious stuff.",
+  "name": "epicquestclient",
+  "productName": "Epic Quest",
+  "identifier": "net.brianturchyn.epicquest.client",
+  "description": "Epic Quest Client",
   "version": "0.1.0",
-  "author": "Mr Gumby",
-  "copyright": "© 2016, your company here",
+  "author": "Brian Turchyn",
+  "copyright": "© 2016, Brian Turchyn",
   "main": "background.js",
   "dependencies": {
-    "fs-jetpack": "^0.7.0"
+    "fs-jetpack": "^0.7.0",
+    "socket.io": "^1.4.5",
+    "jquery": "^2.2.2",
+    "phaser": "^2.4.6"
   }
 }

@@ -21,4 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('greet').innerHTML = greet();
     document.getElementById('platform-info').innerHTML = os.platform();
     document.getElementById('env-name').innerHTML = env.name;
+
+  var socket = io.connect('ws://localhost:3001');
+  socket.on('connect', function() {
+    socket.emit('ferret', 'tobi', function(data) {
+      console.log(data);
+    });
+  });
 });

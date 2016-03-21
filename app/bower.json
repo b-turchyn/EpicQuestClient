@@ -1,0 +1,14 @@
+{
+  "name": "epicquestclient",
+  "description": "Epic Quest Client",
+  "main": "background.js",
+  "authors": [
+    "Brian Turchyn"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "es6"
+  ],
+  "homepage": "",
+  "private": true
+}
