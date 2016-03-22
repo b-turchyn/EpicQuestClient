@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var ipcRenderer = require('electron').ipcRenderer;
 
 var errorText = $("#error");
 
@@ -14,6 +15,7 @@ $("#loginForm").submit(function(e) {
       console.log(data);
       console.log(textStatus);
       console.log(xhr);
+      ipcRenderer.send('loadMainPage', data.token);
     }
   ).fail(function(xhr) {
     errorText.html('Wrong username or password');
