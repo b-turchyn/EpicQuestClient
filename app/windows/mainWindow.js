@@ -11,8 +11,7 @@ export default function() {
 
   var result = new BrowserWindow({
     width: 1000,
-    height: 600,
-    show: false
+    height: 600
   });
 
   if (mainWindowState.isMaximized) {

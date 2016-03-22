@@ -18,7 +18,6 @@ var loginWindow;
 
 app.on('ready', function () {
   loginWindow = new LoginWindow();
-  mainWindow = new MainWindow();
 
   if (false && env.name !== 'production') {
     devHelper.setDevMenu();
@@ -26,7 +25,7 @@ app.on('ready', function () {
   }
 
   ipcMain.on('loadMainPage', function(e, token) {
-    mainWindow.show();
+    mainWindow = new MainWindow();
     loginWindow.close();
   });
 });
