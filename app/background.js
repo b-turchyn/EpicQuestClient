@@ -17,6 +17,11 @@ var mainWindow;
 var loginWindow;
 
 app.on('ready', function () {
+  var session = {
+    username: '',
+    token: ''
+  };
+
   loginWindow = new LoginWindow();
 
   if (false && env.name !== 'production') {
@@ -24,10 +29,19 @@ app.on('ready', function () {
     mainWindow.openDevTools();
   }
 
-  ipcMain.on('loadMainPage', function(e, token) {
+  ipcMain.on('loadMainPage', function(e, username, token) {
+    session.username = username;
+    session.token = token;
+
     mainWindow = new MainWindow();
+    mainWindow.openDevTools();
     loginWindow.close();
+
+    mainWindow.webContents.on('did-finish-load', function() {
+      mainWindow.webContents.send('init-ws', session.username, session.token);
+    });
   });
+
 });
 
 app.on('window-all-closed', function () {

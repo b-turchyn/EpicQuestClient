@@ -22,10 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('platform-info').innerHTML = os.platform();
     document.getElementById('env-name').innerHTML = env.name;
 
-  var socket = io.connect('ws://localhost:3001');
-  socket.on('connect', function() {
-    socket.emit('ferret', 'tobi', function(data) {
-      console.log(data);
+    require('electron').ipcRenderer.on('init-ws', function(e, username, token) {
+      var socket = io.connect('ws://localhost:3001');
+      socket.on('connect', function() {
+        socket.emit('auth', username, token, function(result) {
+          console.log("Token auth result: " + result);
+          if(!result) {
+            socket.disconnect();
+          } else {
+            console.log("Holy shit it works!");
+          }
+        });
+      });
     });
-  });
+
 });

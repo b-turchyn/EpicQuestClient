@@ -15,7 +15,7 @@ $("#loginForm").submit(function(e) {
       console.log(data);
       console.log(textStatus);
       console.log(xhr);
-      ipcRenderer.send('loadMainPage', data.token);
+      ipcRenderer.send('loadMainPage', $("#username").val(), data.token);
     }
   ).fail(function(xhr) {
     errorText.html('Wrong username or password');
