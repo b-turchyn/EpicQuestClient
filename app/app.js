@@ -3,7 +3,7 @@
 
 // Use new ES6 modules syntax for everything.
 import os from 'os'; // native node.js module
-import { remote } from 'electron'; // native electron module
+import { remote, ipcRenderer } from 'electron'; // native electron module
 import jetpack from 'fs-jetpack'; // module loaded from npm
 import { greet } from './hello_world/hello_world'; // code authored by you in this project
 import env from './env';
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('platform-info').innerHTML = os.platform();
     document.getElementById('env-name').innerHTML = env.name;
 
-    require('electron').ipcRenderer.on('init-ws', function(e, username, token) {
+    ipcRenderer.on('init-ws', function(e, username, token) {
       var socket = io.connect('ws://localhost:3001');
       socket.on('connect', function() {
         socket.emit('auth', username, token, function(result) {
