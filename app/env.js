@@ -10,4 +10,5 @@ var appDir = jetpack.cwd(app.getAppPath());
 
 var manifest = appDir.read('package.json', 'json');
 
-export default manifest.env;
+export const env = manifest.env;
+export const VERSION = manifest.version;

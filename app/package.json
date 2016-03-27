@@ -11,6 +11,8 @@
     "fs-jetpack": "^0.7.0",
     "socket.io": "^1.4.5",
     "jquery": "^2.2.2",
-    "phaser": "^2.4.6"
+    "phaser": "^2.4.6",
+    "kbpgp": "^2.0.52",
+    "request": "^2.69.0"
   }
 }

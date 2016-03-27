@@ -1,7 +1,7 @@
 
 import { app, BrowserWindow } from 'electron';
 import devHelper from '../vendor/electron_boilerplate/dev_helper';
-import env from '../env';
+import { env } from '../env';
 
 export default function() {
   var result = new BrowserWindow({

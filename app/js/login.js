@@ -1,3 +1,4 @@
+import { env, VERSION } from '../env';
 var $ = require('jquery');
 var ipcRenderer = require('electron').ipcRenderer;
 
@@ -8,7 +9,7 @@ errorText.html("&nbsp;");
 $("#loginForm").submit(function(e) {
   errorText.html("&nbsp;");
   e.preventDefault();
-  $.post('http://127.0.0.1:3000/api/v1/login', {
+  $.post(env.web_protocol + '://' + env.web_host + '/api/v1/login', {
       'username': $("#username").val(),
       'password': $("#password").val()
     }, function(data, textStatus, xhr) {

@@ -4,6 +4,7 @@
 // window from here.
 
 import { app, BrowserWindow, ipcMain } from 'electron';
+import { fs } from 'fs';
 import devHelper from './vendor/electron_boilerplate/dev_helper';
 import windowStateKeeper from './vendor/electron_boilerplate/window_state';
 import LoginWindow from './windows/loginWindow';
@@ -11,7 +12,7 @@ import MainWindow from './windows/mainWindow';
 
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
-import env from './env';
+import { env } from './env';
 
 var mainWindow;
 var loginWindow;
@@ -24,7 +25,7 @@ app.on('ready', function () {
 
   loginWindow = new LoginWindow();
 
-  if (false && env.name !== 'production') {
+  if (false && env.env.name !== 'production') {
     devHelper.setDevMenu();
     mainWindow.openDevTools();
   }
