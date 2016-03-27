@@ -9,6 +9,7 @@ import devHelper from './vendor/electron_boilerplate/dev_helper';
 import windowStateKeeper from './vendor/electron_boilerplate/window_state';
 import LoginWindow from './windows/loginWindow';
 import MainWindow from './windows/mainWindow';
+import patcher from './lib/patching';
 
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
@@ -42,6 +43,13 @@ app.on('ready', function () {
       mainWindow.webContents.send('init-ws', session.username, session.token);
     });
   });
+
+  /*
+   *patcher.performPatching(function(result) {
+   *  console.log(result);
+   *});
+   */
+  patcher.performPatching();
 
 });
 
