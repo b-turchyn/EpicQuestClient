@@ -1,6 +1,8 @@
 var $ = require('jquery');
 var ipcRenderer = require('electron').ipcRenderer;
 
+import { api } from '../lib/api';
+
 var errorText = $("#error");
 
 errorText.html("&nbsp;");

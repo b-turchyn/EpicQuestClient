@@ -11,3 +11,4 @@ var appDir = jetpack.cwd(app.getAppPath());
 var manifest = appDir.read('package.json', 'json');
 
 export default manifest.env;
+export const web_url = manifest.env.web_protocol + '://' + manifest.env.web_host;
