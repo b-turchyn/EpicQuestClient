@@ -12,14 +12,18 @@ import MainWindow from './windows/mainWindow';
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
 import env from './env';
+import { api } from './lib/api';
 
 var mainWindow;
 var loginWindow;
 
 app.on('ready', function () {
+  api.config.readConfig();
+  console.log(api.config.dataPath());
   var session = {
     username: '',
-    token: ''
+    token: '',
+    socket: null
   };
 
   loginWindow = new LoginWindow();
@@ -40,6 +44,10 @@ app.on('ready', function () {
     mainWindow.webContents.on('did-finish-load', function() {
       mainWindow.webContents.send('init-ws', session.username, session.token);
     });
+  });
+
+  ipcMain.on('setSocket', function(e, socket) {
+    session.socket = socket;
   });
 
 });

@@ -12,3 +12,4 @@ var manifest = appDir.read('package.json', 'json');
 
 export default manifest.env;
 export const web_url = manifest.env.web_protocol + '://' + manifest.env.web_host;
+export const socket_url = manifest.env.socket_protocol + '://' + manifest.env.socket_host;
