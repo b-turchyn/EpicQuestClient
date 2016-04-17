@@ -10,16 +10,17 @@ errorText.html("&nbsp;");
 $("#loginForm").submit(function(e) {
   errorText.html("&nbsp;");
   e.preventDefault();
-  $.post('http://127.0.0.1:3000/api/v1/login', {
-      'username': $("#username").val(),
-      'password': $("#password").val()
-    }, function(data, textStatus, xhr) {
-      console.log(data);
-      console.log(textStatus);
-      console.log(xhr);
-      ipcRenderer.send('loadMainPage', $("#username").val(), data.token);
+  api.auth.login($("#username").val(), $("#password").val(), function(data, statusCode, xhr) {
+    if (data) {
+      if (statusCode === 200) {
+        console.log('Success');
+        console.log(xhr);
+        ipcRenderer.send('loadMainPage', $("#username").val(), data.token);
+      } else {
+        $("#error").html(xhr);
+      }
+    } else {
+      $("#error").html(xhr);
     }
-  ).fail(function(xhr) {
-    errorText.html('Wrong username or password');
   });
 });
