@@ -1,7 +1,7 @@
 var request = require('request');
 import { web_url } from '../../env';
 
-export default {
+export var auth = {
   login: function(username, password, callback) {
     request.post({
       url: web_url + '/api/v1/login',
@@ -9,6 +9,14 @@ export default {
         username: username,
         password: password
       }
-    }, callback);
+    }, function(error, response, body) {
+      var data;
+      try {
+        data = JSON.parse(body);
+      } catch (err) {
+        data = null;
+      }
+      callback(data, response.statusCode, body);
+    });
   }
 };

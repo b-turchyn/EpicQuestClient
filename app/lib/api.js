@@ -1,6 +1,6 @@
 
 import { auth } from './api/auth';
 
-export default {
+export var api = {
   auth: auth
 };
