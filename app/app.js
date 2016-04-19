@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('env-name').innerHTML = env.name;
 
     ipcRenderer.on('init-ws', function(e, username, token) {
-      socket = api.socket.connect(username, token);
+      var socket = api.socket.connect(username, token);
       ipcRenderer.send('setSocket', socket);
     });
 
