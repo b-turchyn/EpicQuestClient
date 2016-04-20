@@ -1,6 +1,7 @@
 {
   "name": "development",
   "description": "Add here any environment specific stuff you like.",
+  "patch_host": "127.0.0.1:3000",
   "socket_host": "127.0.0.1:3001",
   "socket_protocol": "ws",
   "web_host": "127.0.0.1:3000",
