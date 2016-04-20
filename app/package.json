@@ -12,6 +12,7 @@
     "socket.io": "^1.4.5",
     "jquery": "^2.2.2",
     "phaser": "^2.4.6",
-    "electron-settings": "~1.0.4"
+    "electron-settings": "~1.0.4",
+    "request-progress": "~2.0.1"
   }
 }
